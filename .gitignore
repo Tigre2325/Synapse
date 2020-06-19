@@ -1,9 +1,11 @@
 # ignore a single file
 # mycode.class
+Interface_2_joueurs_3.0.py
+Test.py
 
 # ignore an entire directory
 /.vscode/
-/__pycache__/
+classes/__pycache__/
 
 
 # ignore a file type
