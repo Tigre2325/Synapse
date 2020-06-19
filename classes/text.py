@@ -13,10 +13,15 @@ class Text():
         self.textColor = textColor
         self.x = x
         self.y = y
-        self.canvasText = self.parent.create_text(self.x, self.y, text=self.text,
-                                                  font=("Minecraft", self.textSize), fill=self.textColor,
-                                                  justify=tk.CENTER,
-                                                  state=tk.HIDDEN)
+        self.canvasText = self.parent.create_text(
+            self.x,
+            self.y,
+            text=self.text,
+            font=("Minecraft", self.textSize),
+            fill=self.textColor,
+            justify=tk.CENTER,
+            state=tk.HIDDEN
+        )
 
     def show(self):
         self.parent.itemconfigure(self.canvasText, state=tk.NORMAL)

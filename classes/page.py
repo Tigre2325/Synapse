@@ -7,8 +7,13 @@ class Page(tk.Canvas):
 
     def __init__(self, parent):
         self.parent = parent
-        tk.Canvas.__init__(self, self.parent, width=self.parent.width,
-                           height=self.parent.height, borderwidth=0)
+        tk.Canvas.__init__(
+            self,
+            self.parent,
+            width=self.parent.width,
+            height=self.parent.height,
+            borderwidth=0
+        )
         self.pack()  # fill=tk.BOTH, expand=True)  # Make the window resizable
         self.hide(self.parent)
 

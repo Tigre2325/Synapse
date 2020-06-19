@@ -10,8 +10,12 @@ class Image():
         self.photoImage = ImageTk.PhotoImage(self.image)
         self.x = x
         self.y = y
-        self.canvasImage = self.parent.create_image(self.x, self.y,
-                                                    image=self.photoImage, state=tk.HIDDEN)
+        self.canvasImage = self.parent.create_image(
+            self.x,
+            self.y,
+            image=self.photoImage,
+            state=tk.HIDDEN
+        )
 
     def show(self):
         self.parent.itemconfigure(self.canvasImage, state=tk.NORMAL)
@@ -21,5 +25,7 @@ class Image():
 
     def scale(self, factor):
         self.image = self.image.resize(
-            (self.image.width * factor, self.image.height * factor), ImageModule.ANTIALIAS)
+            (self.image.width * factor, self.image.height * factor),
+            ImageModule.ANTIALIAS
+        )
         self.photoImage = ImageTk.PhotoImage(self.image)

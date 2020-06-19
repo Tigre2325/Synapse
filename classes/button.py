@@ -19,12 +19,19 @@ class Button(tk.Button):
         self.y = y
         self.backgroundColor = backgroundColor
         self.borderWidth = 5
-        tk.Button.__init__(self, self.parent, compound=tk.CENTER,
-                           text=self.text, image=self.photoImage,
-                           font=("Minecraft", self.textSize),
-                           foreground=self.textColor, activeforeground=self.textColor,
-                           background=self.backgroundColor, activebackground=self.backgroundColor,
-                           borderwidth=self.borderWidth)
+        tk.Button.__init__(
+            self,
+            self.parent,
+            compound=tk.CENTER,
+            text=self.text,
+            image=self.photoImage,
+            font=("Minecraft", self.textSize),
+            foreground=self.textColor,
+            activeforeground=self.textColor,
+            background=self.backgroundColor,
+            activebackground=self.backgroundColor,
+            borderwidth=self.borderWidth
+        )
         self.canvasButton = self.parent.create_window(
             self.x, self.y, window=self, state=tk.HIDDEN)
 
