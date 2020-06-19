@@ -4,8 +4,9 @@ Interface_2_joueurs_3.0.py
 Test.py
 
 # ignore an entire directory
-/.vscode/
+.vscode/
 classes/__pycache__/
+images/
 
 
 # ignore a file type
@@ -13,3 +14,5 @@ classes/__pycache__/
 
 # add an exception (using !) to the preceding rule to track a specific file
 # !package.json
+!images/dark_theme
+!images/light_theme
