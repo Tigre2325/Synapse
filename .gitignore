@@ -8,9 +8,9 @@ Test.py
 classes/__pycache__/
 images/
 
-
 # ignore a file type
 # *.json
+*.xcf
 
 # add an exception (using !) to the preceding rule to track a specific file
 # !package.json
