@@ -7,27 +7,29 @@ class Page(tk.Canvas):
 
     def __init__(self, parent):
         self.parent = parent
+        self.frame = tk.Frame(
+            self.parent
+        )
         tk.Canvas.__init__(
             self,
-            self.parent,
+            self.frame,
             width=self.parent.width,
             height=self.parent.height,
             borderwidth=0
         )
-        self.pack()  # fill=tk.BOTH, expand=True)  # Make the window resizable
-        self.hide(self.parent)
+        self.frame.pack(fill=tk.BOTH, expand=True)  # Make the window resizable
+        self.pack(expand=True)
+        self.hide()
 
         Page.pageNumber += 1
-        Page.pageList.append(self)
+        Page.pageList.append(self.frame)
 
         self.parent.update()
 
-    def show(self, parent):
-        self.pack()  # fill=tk.BOTH, expand=True)
-        self.parent = parent
+    def show(self):
+        self.frame.pack(fill=tk.BOTH, expand=True)  # Make the window resizable
         self.parent.update()
 
-    def hide(self, parent):
-        self.pack_forget()
-        self.parent = parent
+    def hide(self):
+        self.frame.pack_forget()
         self.parent.update()
