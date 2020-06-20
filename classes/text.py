@@ -5,7 +5,7 @@ import tkinter as tk
 
 
 class Text():
-    def __init__(self, parent, text, x=0, y=0,
+    def __init__(self, parent, text, x, y,
                  textSize=16, textColor="#000000"):
         self.parent = parent
         self.text = text
@@ -22,6 +22,9 @@ class Text():
             justify=tk.CENTER,
             state=tk.HIDDEN
         )
+
+    def set(self, **kwargs):
+        self.parent.itemconfigure(self.canvasText, **kwargs)
 
     def show(self):
         self.parent.itemconfigure(self.canvasText, state=tk.NORMAL)
