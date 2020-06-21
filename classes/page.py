@@ -2,7 +2,6 @@ import tkinter as tk
 
 
 class Page(tk.Canvas):
-    pageNumber = 0
     pageList = []
 
     def __init__(self, parent):
@@ -21,7 +20,6 @@ class Page(tk.Canvas):
         self.pack(expand=True)
         self.hide()
 
-        Page.pageNumber += 1
         Page.pageList.append(self.frame)
 
         self.parent.update()
