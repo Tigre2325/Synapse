@@ -33,7 +33,14 @@ class Button(tk.Button):
             borderwidth=self.borderWidth
         )
         self.canvasButton = self.parent.create_window(
-            self.x, self.y, window=self, state=tk.HIDDEN)
+            self.x,
+            self.y,
+            window=self,
+            state=tk.HIDDEN
+        )
+
+    def set(self, **kwargs):
+        self.configure(**kwargs)
 
     def show(self):
         self.parent.itemconfigure(self.canvasButton, state=tk.NORMAL)
