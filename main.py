@@ -7,22 +7,16 @@ from PIL import ImageTk
 ###############################################################################
 # Classes
 from classes.application import *
-from classes.page import *
-from classes.image import *
-from classes.text import *
 from classes.button import *
+from classes.image import *
+from classes.page import *
+from classes.settings import *
+from classes.text import *
 
 
 ###############################################################################
 # Window
 app = Application()
-
-# Application pages
-home = Page(app)
-register = Page(app)
-game = Page(app)
-settings = Page(app)
-rules = Page(app)
 ###############################################################################
 
 ###############################################################################
@@ -46,16 +40,17 @@ language = [
 ]
 
 #######################################
-# Homepage
-homeBackground = Image(
-    home,
-    "./images/{}/background.png".format(currentTheme),
-    centerWidth,
-    centerHeight
-)
+# Application pages
+homePage = Page(app, "./images/{}/background.png".format(currentTheme))
+registerPage = Page(app, "./images/{}/background.png".format(currentTheme))
+gamePage = Page(app, "./images/{}/background.png".format(currentTheme))
+settingsPage = Page(app, "./images/{}/background.png".format(currentTheme))
+rulesPage = Page(app, "./images/{}/background.png".format(currentTheme))
 
+#######################################
+# Homepage
 synapse = Text(
-    home,
+    homePage,
     "SYNAPSE",
     centerWidth,
     int(app.winfo_height() * 20 / 100),
@@ -64,8 +59,8 @@ synapse = Text(
 )
 
 authors = Text(
-    home,
-    "Made by Tigre2325,\n\n with the participation of Fukuro and CaptainRommel,\n\n and based on LARBROJEUX's Synapse game",
+    homePage,
+    "Made by Tigre2325 in 2020,\n\n with the participation of Fukuro and CaptainRommel,\n\n and based on LARBROJEUX's Synapse game",
     centerWidth,
     int(app.winfo_height() * 93 / 100),
     12
@@ -73,7 +68,7 @@ authors = Text(
 
 # Buttons on the homepage
 playButton = Button(
-    home,
+    homePage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Play",
     centerWidth,
@@ -84,7 +79,7 @@ playButton = Button(
 )
 
 settingsButton = Button(
-    home,
+    homePage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Settings",
     centerWidth,
@@ -95,7 +90,7 @@ settingsButton = Button(
 )
 
 quitAppButton = Button(
-    home,
+    homePage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Quit",
     int(app.winfo_width() * 7 / 100),
@@ -106,7 +101,7 @@ quitAppButton = Button(
 )
 
 ruleButton = Button(
-    home,
+    homePage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Rules",
     int(app.winfo_width() * 93 / 100),
@@ -116,8 +111,7 @@ ruleButton = Button(
     "#804030"
 )
 
-# Show all the objects on the home page canvas
-homeBackground.show()
+# Show all the objects on the page
 synapse.show()
 authors.show()
 
@@ -140,46 +134,44 @@ ruleButton.show()
 
 #######################################
 # Game page
-gameBackground = Image(
-    game,
-    "./images/{}/background.png".format(currentTheme),
-    centerWidth,
-    centerHeight
-)
-
 board = Image(
-    game,
+    gamePage,
     "./images/{}/board.png".format(currentTheme),
     centerWidth,
     centerHeight
 )
+board.show()
 
 # Left side
-quitGameButton = Button(
-    game,
-    "./images/{}/button_background_165x55.png".format(currentTheme),
-    "Quit",
-    int(app.winfo_width() * 6 / 100),
+backGameButton = Button(
+    gamePage,
+    "./images/{}/button_back_background_165x55.png".format(currentTheme),
+    "            Back",
+    int(app.winfo_width() * 7 / 100),
     int(app.winfo_height() * 95 / 100),
     14,
     "#f0d0a0",
     "#804030"
 )
+backGameButton.show()
+backGameButton.scale(0.9, 0.7)
 
 ruleGameButton = Button(
-    game,
+    gamePage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Rules",
-    int(app.winfo_width() * 16 / 100),
+    int(app.winfo_width() * 18 / 100),
     int(app.winfo_height() * 95 / 100),
     14,
     "#f0d0a0",
     "#804030"
 )
+ruleGameButton.show()
+ruleGameButton.scale(0.5, 0.7)
 
 # Right side
 currentPlayer = Text(
-    game,
+    gamePage,
     # TODO: creer un objet joueur avec une méthode de classe qui retourne le joueur actuel
     "{}'s turn".format("Anthony"),
     int(app.winfo_width() * 89 / 100),
@@ -187,6 +179,7 @@ currentPlayer = Text(
     24,
 )
 currentPlayer.set(width=280)
+currentPlayer.show()
 
 instructions = [
     # Cliquez sur une des cases du plateau afin de placer vos pièces
@@ -206,15 +199,16 @@ instructions = [
 ]
 
 instruction = Text(
-    game,
+    gamePage,
     instructions[0],
     int(app.winfo_width() * 89 / 100),
     int(app.winfo_height() * 16 / 100)
 )
 instruction.set(width=280)
+instruction.show()
 
 onePieceButton = Button(
-    game,
+    gamePage,
     "./images/{}/background_55x55.png".format(currentTheme),
     "1",
     int(app.winfo_width() * 82 / 100),
@@ -223,9 +217,10 @@ onePieceButton = Button(
     "#f0d0a0",
     "#804030"
 )
+onePieceButton.show()
 
 twoPieceButton = Button(
-    game,
+    gamePage,
     "./images/{}/background_55x55.png".format(currentTheme),
     "2",
     int(app.winfo_width() * 89 / 100),
@@ -234,9 +229,10 @@ twoPieceButton = Button(
     "#f0d0a0",
     "#804030"
 )
+twoPieceButton.show()
 
 threePieceButton = Button(
-    game,
+    gamePage,
     "./images/{}/background_55x55.png".format(currentTheme),
     "3",
     int(app.winfo_width() * 96 / 100),
@@ -245,9 +241,10 @@ threePieceButton = Button(
     "#f0d0a0",
     "#804030"
 )
+threePieceButton.show()
 
 arrowUpButton = Button(
-    game,
+    gamePage,
     "./images/{}/arrow_up.png".format(currentTheme),
     "",
     int(app.winfo_width() * 89 / 100),
@@ -256,9 +253,10 @@ arrowUpButton = Button(
     "#f0d0a0",
     "#f0d0a0"
 )
+arrowUpButton.show()
 
 arrowDownButton = Button(
-    game,
+    gamePage,
     "./images/{}/arrow_down.png".format(currentTheme),
     "",
     int(app.winfo_width() * 89 / 100),
@@ -267,9 +265,10 @@ arrowDownButton = Button(
     "#f0d0a0",
     "#f0d0a0"
 )
+arrowDownButton.show()
 
 arrowRightButton = Button(
-    game,
+    gamePage,
     "./images/{}/arrow_right.png".format(currentTheme),
     "",
     int(app.winfo_width() * 96 / 100),
@@ -278,9 +277,10 @@ arrowRightButton = Button(
     "#f0d0a0",
     "#f0d0a0"
 )
+arrowRightButton.show()
 
 arrowLeftButton = Button(
-    game,
+    gamePage,
     "./images/{}/arrow_left.png".format(currentTheme),
     "",
     int(app.winfo_width() * 82 / 100),
@@ -289,9 +289,10 @@ arrowLeftButton = Button(
     "#f0d0a0",
     "#f0d0a0"
 )
+arrowLeftButton.show()
 
 confirmButton = Button(
-    game,
+    gamePage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Confirm",
     int(app.winfo_width() * 89 / 100),
@@ -300,61 +301,92 @@ confirmButton = Button(
     "#f0d0a0",
     "#804030"
 )
+confirmButton.scale(1.2, 0.8)
+confirmButton.show()
 
 piecesRemainingText = Text(
-    game,
+    gamePage,
     "Number of pieces remaining:",
     int(app.winfo_width() * 89 / 100),
     int(app.winfo_height() * 83 / 100),
     20
 )
 piecesRemainingText.set(width=280)
+piecesRemainingText.show()
 
 # TODO: nombre de pièce à créer avec le lancement de la partie
 piecesRemaining = 0
 
 piecesRemainingNumber = Text(
-    game,
+    gamePage,
     "{}".format(piecesRemaining),
     int(app.winfo_width() * 89 / 100),
     int(app.winfo_height() * 93 / 100),
     50
 )
-
-# Show all the objects on the home page canvas
-quitGameButton.show()
-quitGameButton.scale(0.6, 0.7)
-
-ruleGameButton.show()
-ruleGameButton.scale(0.6, 0.7)
-
-
-gameBackground.show()
-board.show()
-
-
-currentPlayer.show()
-
-instruction.show()
-
-onePieceButton.show()
-twoPieceButton.show()
-threePieceButton.show()
-
-arrowUpButton.show()
-arrowDownButton.show()
-arrowRightButton.show()
-arrowLeftButton.show()
-
-confirmButton.scale(1.2, 0.8)
-confirmButton.show()
-
-piecesRemainingText.show()
 piecesRemainingNumber.show()
 
 #######################################
 # Settings page
+backSettingsButton = Button(
+    settingsPage,
+    "./images/{}/button_back_background_165x55.png".format(currentTheme),
+    "            Back",
+    int(app.winfo_width() * 10 / 100),
+    int(app.winfo_height() * 95 / 100),
+    14,
+    "#f0d0a0",
+    "#804030"
+)
+backSettingsButton.scale(1, 0.7)
+backSettingsButton.show()
 
+ruleSettingsButton = Button(
+    settingsPage,
+    "./images/{}/button_background_165x55.png".format(currentTheme),
+    "Rules",
+    int(app.winfo_width() * 10 / 100),
+    int(app.winfo_height() * 15 / 100),
+    14,
+    "#f0d0a0",
+    "#804030"
+)
+ruleSettingsButton.scale(1, 0.7)
+ruleSettingsButton.show()
+
+codeButton = Button(
+    settingsPage,
+    "./images/{}/button_background_165x55.png".format(currentTheme),
+    "See the code",
+    int(app.winfo_width() * 10 / 100),
+    int(app.winfo_height() * 55 / 100),
+    14,
+    "#f0d0a0",
+    "#804030"
+)
+codeButton.scale(1, 0.7)
+codeButton.show()
+
+# Settings
+languageSetting = Settings(
+    settingsPage,
+    "./images/dark_wood_plank.png".format(currentTheme),
+    "Language",
+    language,
+    "#f0d0a0",
+    "#804030"
+)
+languageSetting.show()
+
+themeSetting = Settings(
+    settingsPage,
+    "./images/dark_wood_plank.png".format(currentTheme),
+    "Theme",
+    theme,
+    "#f0d0a0",
+    "#804030"
+)
+themeSetting.show()
 
 #######################################
 # Rule page
@@ -362,11 +394,11 @@ piecesRemainingNumber.show()
 
 #######################################
 # Open the start page
-# home.show()
-# register.show()
-game.show()
-# settings.show()
-# rules.show()
+# homePage.show()
+# registerPage.show()
+# gamePage.show()
+settingsPage.show()
+# rulesPage.show()
 ###############################################################################
 
 ###############################################################################
@@ -377,7 +409,7 @@ game.show()
 #     currentWidth, currentHeight = event.width, event.height
 
 
-# home.bind("<Configure>", configure)
+# homePage.bind("<Configure>", configure)
 
 
 app.mainloop()
