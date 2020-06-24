@@ -17,7 +17,8 @@ class Page(tk.Canvas):
             self.frame,
             width=self.parent.width,
             height=self.parent.height,
-            borderwidth=0
+            borderwidth=0,
+            highlightthickness=0
         )
 
         if "#" in background:
