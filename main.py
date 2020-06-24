@@ -130,8 +130,18 @@ ruleButton.show()
 
 #######################################
 # Register page
-
-
+backRegisterButton = Button(
+    registerPage,
+    "./images/{}/button_back_background_165x55.png".format(currentTheme),
+    "            Back",
+    int(app.winfo_width() * 7 / 100),
+    int(app.winfo_height() * 95 / 100),
+    14,
+    "#f0d0a0",
+    "#804030"
+)
+backRegisterButton.show()
+backRegisterButton.scale(0.9, 0.7)
 #######################################
 # Game page
 board = Image(
@@ -395,9 +405,9 @@ themeSetting.show()
 #######################################
 # Open the start page
 # homePage.show()
-# registerPage.show()
+registerPage.show()
 # gamePage.show()
-settingsPage.show()
+# settingsPage.show()
 # rulesPage.show()
 ###############################################################################
 
