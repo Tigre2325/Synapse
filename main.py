@@ -10,6 +10,7 @@ from classes.application import *
 from classes.button import *
 from classes.image import *
 from classes.page import *
+from classes.player import *
 from classes.settings import *
 from classes.text import *
 
@@ -57,6 +58,7 @@ synapse = Text(
     -150,
     "#502010"
 )
+synapse.show()
 
 authors = Text(
     homePage,
@@ -65,6 +67,7 @@ authors = Text(
     int(app.winfo_height() * 93 / 100),
     12
 )
+authors.show()
 
 # Buttons on the homepage
 playButton = Button(
@@ -77,6 +80,8 @@ playButton = Button(
     "#f0d0a0",
     "#804030"
 )
+playButton.scale(2)
+playButton.show()
 
 settingsButton = Button(
     homePage,
@@ -88,6 +93,8 @@ settingsButton = Button(
     "#f0d0a0",
     "#804030"
 )
+settingsButton.scale(2)
+settingsButton.show()
 
 quitAppButton = Button(
     homePage,
@@ -99,8 +106,10 @@ quitAppButton = Button(
     "#f0d0a0",
     "#804030"
 )
+quitAppButton.scale(0.8, 0.7)
+quitAppButton.show()
 
-ruleButton = Button(
+ruleHomeButton = Button(
     homePage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Rules",
@@ -110,38 +119,79 @@ ruleButton = Button(
     "#f0d0a0",
     "#804030"
 )
-
-# Show all the objects on the page
-synapse.show()
-authors.show()
-
-playButton.scale(2)
-playButton.show()
-
-settingsButton.scale(2)
-settingsButton.show()
-
-quitAppButton.scale(0.8, 0.7)
-quitAppButton.show()
-
-ruleButton.scale(0.8, 0.7)
-ruleButton.show()
-
+ruleHomeButton.scale(0.8, 0.7)
+ruleHomeButton.show()
 
 #######################################
 # Register page
+player1 = Player(
+    registerPage,
+    "./images/dark_wood_plank.png",
+    "#f0d0a0",
+    "#804030"
+)
+
+player2 = Player(
+    registerPage,
+    "./images/dark_wood_plank.png",
+    "#f0d0a0",
+    "#804030"
+)
+
+player3 = Player(
+    registerPage,
+    "./images/dark_wood_plank.png",
+    "#f0d0a0",
+    "#804030"
+)
+
+player4 = Player(
+    registerPage,
+    "./images/dark_wood_plank.png",
+    "#f0d0a0",
+    "#804030"
+)
+Player.show()
+
 backRegisterButton = Button(
     registerPage,
     "./images/{}/button_back_background_165x55.png".format(currentTheme),
     "            Back",
-    int(app.winfo_width() * 7 / 100),
+    int(app.winfo_width() * 10 / 100),
     int(app.winfo_height() * 95 / 100),
     14,
     "#f0d0a0",
     "#804030"
 )
+backRegisterButton.scale(1, 0.7)
 backRegisterButton.show()
-backRegisterButton.scale(0.9, 0.7)
+
+ruleRegisterButton = Button(
+    registerPage,
+    "./images/{}/button_background_165x55.png".format(currentTheme),
+    "Rules",
+    centerWidth,
+    int(app.winfo_height() * 95 / 100),
+    20,
+    "#f0d0a0",
+    "#804030"
+)
+ruleRegisterButton.scale(1, 0.7)
+ruleRegisterButton.show()
+
+startButton = Button(
+    registerPage,
+    "./images/{}/button_background_165x55.png".format(currentTheme),
+    "Play",
+    int(app.winfo_width() * 90 / 100),
+    int(app.winfo_height() * 95 / 100),
+    20,
+    "#f0d0a0",
+    "#804030"
+)
+startButton.scale(1, 0.7)
+startButton.show()
+
 #######################################
 # Game page
 board = Image(
@@ -386,7 +436,6 @@ languageSetting = Settings(
     "#f0d0a0",
     "#804030"
 )
-languageSetting.show()
 
 themeSetting = Settings(
     settingsPage,
@@ -396,8 +445,8 @@ themeSetting = Settings(
     "#f0d0a0",
     "#804030"
 )
-themeSetting.show()
 
+Settings.show()
 #######################################
 # Rule page
 
