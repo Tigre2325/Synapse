@@ -37,7 +37,7 @@ class Page(tk.Canvas):
         self.pack(expand=True)
         self.hide()
 
-        Page.pageList.append(self.frame)
+        Page.pageList.append(self)
 
         self.parent.update()
 

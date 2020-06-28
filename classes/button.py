@@ -7,6 +7,8 @@ from PIL import ImageTk
 
 
 class Button(tk.Button):
+    buttonList = []
+
     def __init__(self, parent, imagePath, text, x, y,
                  textSize, textColor, backgroundColor):
         self.parent = parent
@@ -38,6 +40,8 @@ class Button(tk.Button):
             window=self,
             state=tk.HIDDEN
         )
+
+        Button.buttonList.append(self)
 
     def set(self, **kwargs):
         self.configure(**kwargs)
