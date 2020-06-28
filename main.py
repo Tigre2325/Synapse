@@ -138,26 +138,39 @@ player2 = Player(
     "#804030"
 )
 
-player3 = Player(
-    registerPage,
-    "./images/dark_wood_plank.png",
-    "#f0d0a0",
-    "#804030"
-)
+# player3 = Player(
+#     registerPage,
+#     "./images/dark_wood_plank.png",
+#     "#f0d0a0",
+#     "#804030"
+# )
 
-player4 = Player(
+# player4 = Player(
+#     registerPage,
+#     "./images/dark_wood_plank.png",
+#     "#f0d0a0",
+#     "#804030"
+# )
+Player.show()
+
+addPlayerButton = Button(
     registerPage,
     "./images/dark_wood_plank.png",
+    "New player",
+    int(app.winfo_width() * (len(Player.playerList) * 24.5 + 13) / 100),
+    int(app.winfo_height() * 25 / 100),
+    22,
     "#f0d0a0",
     "#804030"
 )
-Player.show()
+addPlayerButton.scale(1.2, 1.22)
+addPlayerButton.show()
 
 backRegisterButton = Button(
     registerPage,
     "./images/{}/button_back_background_165x55.png".format(currentTheme),
     "            Back",
-    int(app.winfo_width() * 10 / 100),
+    int(app.winfo_width() * 8 / 100),
     int(app.winfo_height() * 95 / 100),
     14,
     "#f0d0a0",
@@ -183,7 +196,7 @@ startButton = Button(
     registerPage,
     "./images/{}/button_background_165x55.png".format(currentTheme),
     "Play",
-    int(app.winfo_width() * 90 / 100),
+    int(app.winfo_width() * 92 / 100),
     int(app.winfo_height() * 95 / 100),
     20,
     "#f0d0a0",
@@ -232,7 +245,7 @@ ruleGameButton.scale(0.5, 0.7)
 # Right side
 currentPlayer = Text(
     gamePage,
-    # TODO: creer un objet joueur avec une méthode de classe qui retourne le joueur actuel
+    # TODO: creer methode dans la classe Brain qui retourne le joueur actuel
     "{}'s turn".format("Anthony"),
     int(app.winfo_width() * 89 / 100),
     int(app.winfo_height() * 6 / 100),
@@ -255,7 +268,7 @@ instructions = [
     "Click on one of the board cases to position your pieces",
     "Select the number of pieces you want to play",
     "Select the orientation of your pieces",
-    # TODO: terminer l'écriture des instructions
+    # TODO: terminer l'ecriture des instructions
 ]
 
 instruction = Text(
@@ -374,7 +387,7 @@ piecesRemainingText = Text(
 piecesRemainingText.set(width=280)
 piecesRemainingText.show()
 
-# TODO: nombre de pièce à créer avec le lancement de la partie
+# TODO: nombre de piece à creer avec le lancement de la partie
 piecesRemaining = 0
 
 piecesRemainingNumber = Text(
@@ -467,8 +480,11 @@ registerPage.show()
 # def configure(event):
 #     currentWidth, currentHeight = event.width, event.height
 
-
 # homePage.bind("<Configure>", configure)
 
+"""
+TODO: faire une classe Brain qui sera une classe utilitaire
+    avec que des methodes statiques dedans
+"""
 
 app.mainloop()
