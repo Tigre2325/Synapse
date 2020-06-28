@@ -10,7 +10,8 @@ from numpy import interp
 class Settings(tk.OptionMenu):
     settingsList = []
 
-    def __init__(self, parent, imagePath, text, optionList, textColor, backgroundColor):
+    def __init__(self, parent, imagePath, text, optionList,
+                 textColor, backgroundColor):
         self.parent = parent
         self.image = ImageModule.open(imagePath)
         self.photoImage = ImageTk.PhotoImage(self.image)
@@ -26,7 +27,7 @@ class Settings(tk.OptionMenu):
             height=int(self.parent.winfo_reqheight() * 10 / 100),
             borderwidth=10,
             relief=tk.RIDGE,
-            background=backgroundColor,
+            background=self.backgroundColor,
             highlightthickness=0
         )
 
@@ -57,9 +58,6 @@ class Settings(tk.OptionMenu):
         )
 
         # Widget
-        def configureSetting(event):
-            print(self.variable.get())
-
         self.variable = tk.StringVar()
         self.variable.set(self.optionList[0])
 
@@ -68,15 +66,14 @@ class Settings(tk.OptionMenu):
             self.parent,
             self.variable,
             *self.optionList,
-            command=configureSetting
         )
         self.configure(
             width=12,
             height=2,
-            background=textColor,
-            foreground=backgroundColor,
-            activebackground=backgroundColor,
-            activeforeground=textColor,
+            background=self.textColor,
+            foreground=self.backgroundColor,
+            activebackground=self.backgroundColor,
+            activeforeground=self.textColor,
             highlightthickness=0,
             font=("Minecraft", 16),
         )
@@ -88,15 +85,16 @@ class Settings(tk.OptionMenu):
 
         Settings.settingsList.append(self)
 
-    def show(self):
-        yPlace = interp(
-            Settings.settingsList.index(self),
-            [0, len(Settings.settingsList)],
-            [10, 100]
-        )
-        self.parent.create_window(
-            int(self.parent.winfo_reqwidth() * 60 / 100),
-            int(self.parent.winfo_reqheight() *
-                yPlace / 100),
-            window=self.canvasSetting
-        )
+    def show(cls):
+        for setting in Settings.settingsList:
+            yPlace = interp(
+                Settings.settingsList.index(setting),
+                [0, len(Settings.settingsList)],
+                [10, 100]
+            )
+            setting.parent.create_window(
+                int(setting.parent.winfo_reqwidth() * 60 / 100),
+                int(setting.parent.winfo_reqheight() * yPlace / 100),
+                window=setting.canvasSetting
+            )
+    show = classmethod(show)
