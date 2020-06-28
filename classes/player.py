@@ -115,15 +115,12 @@ class Player():
         Player.playerList.append(self)
 
     def show(cls):
-        for player in Player.playerList:
-            xPlace = interp(
-                Player.playerList.index(player),
-                [0, len(Player.playerList)-1],
-                [13, 87]
-            )
-            player.parent.create_window(
-                int(player.parent.winfo_reqwidth() * xPlace / 100),
-                int(player.parent.winfo_reqheight() * 25 / 100),
-                window=player.canvasPlayer
+        for i in range(len(Player.playerList)):
+            xPlace = i * 24.5 + 13
+            Player.playerList[i].parent.create_window(
+                int(Player.playerList[i].parent.winfo_reqwidth(
+                ) * xPlace / 100),
+                int(Player.playerList[i].parent.winfo_reqheight() * 25 / 100),
+                window=Player.playerList[i].canvasPlayer
             )
     show = classmethod(show)
