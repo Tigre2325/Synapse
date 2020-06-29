@@ -4,6 +4,8 @@ from PIL import ImageTk
 
 
 class Image():
+    imageList = []
+
     def __init__(self, parent, imagePath, x=0, y=0):
         self.parent = parent
         self.image = ImageModule.open(imagePath)
@@ -16,6 +18,7 @@ class Image():
             image=self.photoImage,
             state=tk.HIDDEN
         )
+        Image.imageList.append(self)
 
     def show(self):
         self.parent.itemconfigure(self.canvasImage, state=tk.NORMAL)
