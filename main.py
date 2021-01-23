@@ -462,15 +462,116 @@ themeSetting = Settings(
 Settings.show()
 #######################################
 # Rule page
+backRulesButton = Button(
+    rulesPage,
+    "./images/{}/button_back_background_165x55.png".format(currentTheme),
+    "            Back",
+    int(app.winfo_width() * 10 / 100),
+    int(app.winfo_height() * 5 / 100),
+    14,
+    "#f0d0a0",
+    "#804030"
+)
+backRulesButton.scale(1, 0.7)
+backRulesButton.show()
 
+rulesText = [
+    "Synapse is a turn-based strategy game (like chess) which is originally played by 2 players.",
+    "The aim of the game is to cause your opponent to lose the ability to play.",
+    "The 1st player is randomly chosen. He can put 1, 2 or 3 pieces on the case he wants (the pieces must have the same orientation). These pieces indicate where the next player have to play its turn.",
+    "The winner is the player who manage to cause its opponent to lose the ability to play either by lack of pieces, or by lack of empty case : the player who is stuck win the game.\nTo simplify, the looser is the player who take the last piece or the player who put its piece on the last case of the board."
+]
+
+rulesTextFormat = ""
+for li in rulesText:
+    rulesTextFormat += li + "\n\n\n\n\n"
+
+rules = Text(
+    rulesPage,
+    rulesTextFormat,
+    int(app.winfo_width() * 22 / 100),
+    int(app.winfo_height() * 9 / 100),
+    14,
+    "#502010"
+)
+rules.set(
+    anchor=tk.NW,
+    justify=tk.LEFT,
+    width=int(app.winfo_width() * 75 / 100)
+)
+rules.show()
+
+introduction = Text(
+    rulesPage,
+    "Introduction",
+    int(app.winfo_width() * 20 / 100),
+    int(app.winfo_height() * 3 / 100),
+    20,
+    "#502010"
+)
+introduction.set(
+    anchor=tk.NW,
+    justify=tk.LEFT,
+    width=int(app.winfo_width() * 75 / 100),
+    font=("Minecraft", 20, "bold")
+)
+introduction.show()
+
+aim = Text(
+    rulesPage,
+    "Aim of the game",
+    int(app.winfo_width() * 20 / 100),
+    int(app.winfo_height() * 19 / 100),
+    20,
+    "#502010"
+)
+aim.set(
+    anchor=tk.NW,
+    justify=tk.LEFT,
+    width=int(app.winfo_width() * 75 / 100),
+    font=("Minecraft", 20, "bold")
+)
+aim.show()
+
+proceedings = Text(
+    rulesPage,
+    "Game proceedings",
+    int(app.winfo_width() * 20 / 100),
+    int(app.winfo_height() * 32 / 100),
+    20,
+    "#502010"
+)
+proceedings.set(
+    anchor=tk.NW,
+    justify=tk.LEFT,
+    width=int(app.winfo_width() * 75 / 100),
+    font=("Minecraft", 20, "bold")
+)
+proceedings.show()
+
+winCondition = Text(
+    rulesPage,
+    "Winner",
+    int(app.winfo_width() * 20 / 100),
+    int(app.winfo_height() * 50 / 100),
+    20,
+    "#502010"
+)
+winCondition.set(
+    anchor=tk.NW,
+    justify=tk.LEFT,
+    width=int(app.winfo_width() * 75 / 100),
+    font=("Minecraft", 20, "bold")
+)
+winCondition.show()
 
 #######################################
 # Open the start page
 # homePage.show()
-registerPage.show()
+# registerPage.show()
 # gamePage.show()
 # settingsPage.show()
-# rulesPage.show()
+rulesPage.show()
 ###############################################################################
 
 ###############################################################################
